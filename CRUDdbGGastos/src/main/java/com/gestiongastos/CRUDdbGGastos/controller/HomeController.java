@@ -68,11 +68,21 @@ public class HomeController {
 				stringRandom3 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
 				intRandom = createIntRandom(max);
 				intRandom2 = createIntRandom(max * 10);
+				
+				//Estoy creando nuevo objeto member, xq no lo reconoce ya creado y no hace import
+				com.gestiongastos.CRUDdbGGastos.model.Member member = new com.gestiongastos.CRUDdbGGastos.model.Member();
+				
+				member.setAge(intRandom2);
+				member.setEmail(alphabetChars);
+				member.setName(alphabetChars);
+				member.setSurname(alphabetChars);
+				member.setPassword(alphabetChars);
+				member.addExpense(null);
 
 				memberRepository.save(new Member(faker.name().firstName(), faker.name().lastName(),
 						faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
-						faker.number().randomDouble(2, 5, 2000),
-						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2+ stringRandom3));
+						faker.number().randomDouble(2, 5, 6000),
+						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2 + stringRandom3));
 
 				expenseRepository.save(new Expense(faker.beer().name(), faker.date().birthday(0, 3),
 						faker.number().randomDouble(2, 50, 2000)));

@@ -3,7 +3,6 @@ package com.gestiongastos.CRUDdbGGastos.controller;
 import java.io.IOException;
 import java.lang.reflect.Member;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.gestiongastos.CRUDdbGGastos.repository.MemberRepository;
+import com.gestiongastos.CRUDdbGGastos.model.Member;
 
 @Controller
 @RequestMapping("/member")
@@ -73,7 +72,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/addMember")
-	public String inserMember(Member member) {
+	public String inserMember(com.gestiongastos.CRUDdbGGastos.model.Member member) {
 
 		memberRepository.save(member);
 
@@ -118,7 +117,7 @@ public class MemberController {
 			if (((com.gestiongastos.CRUDdbGGastos.model.Member) member).getAge() != 0)
 				((com.gestiongastos.CRUDdbGGastos.model.Member) memberFound.get()).setAge(((com.gestiongastos.CRUDdbGGastos.model.Member) member).getAge());
 			
-
+      // No reconoce class Member
 			memberRepository.save(memberFound.get());
 			return "redirect:/member/allMembers";
 
