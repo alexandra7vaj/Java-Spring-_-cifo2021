@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Member {
+public class Visitor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class Member {
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Expense> expenses = new ArrayList<>();
 
-	public Member() {
+	public Visitor() {
 		super();
 	}
 
-	public Member(String name, String surname, int age, String email, String password) {
+	public Visitor(String name, String surname, int age, String email, String password) {
 		super();
 
 		this.name = name;
@@ -106,7 +106,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", email=" + email
+		return "Visitor [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", email=" + email
 				+  "]\n";
 	}
 

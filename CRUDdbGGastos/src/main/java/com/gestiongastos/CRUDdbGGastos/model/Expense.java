@@ -93,7 +93,7 @@ public class Expense {
 		return "Expense [id=" + id + ", name=" + name + ", date=" + date + ", value=" + value + "]";
 	}
 
-	public void setMember(com.gestiongastos.CRUDdbGGastos.model.Member member2) {
+	public void setMember(com.gestiongastos.CRUDdbGGastos.model.Visitor member2) {
 		// TODO Auto-generated method stub
 		
 	}

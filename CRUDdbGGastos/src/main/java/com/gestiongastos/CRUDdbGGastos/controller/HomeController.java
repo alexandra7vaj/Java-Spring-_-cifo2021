@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gestiongastos.CRUDdbGGastos.model.Expense;
-import com.gestiongastos.CRUDdbGGastos.model.Member;
+import com.gestiongastos.CRUDdbGGastos.model.Visitor;
 import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
-import com.gestiongastos.CRUDdbGGastos.repository.MemberRepository;
+import com.gestiongastos.CRUDdbGGastos.repository.VisitorRepository;
 //import com.github.javafaker.Faker;
 import com.github.javafaker.Faker;
 
@@ -25,7 +25,7 @@ import com.github.javafaker.Faker;
 public class HomeController {
 	
 	@Autowired
-	private MemberRepository memberRepository;
+	private VisitorRepository visitorRepository;
 	@Autowired
 	private ExpenseRepository expenseRepository;
 
@@ -69,17 +69,8 @@ public class HomeController {
 				intRandom = createIntRandom(max);
 				intRandom2 = createIntRandom(max * 10);
 				
-				//Estoy creando nuevo objeto member, xq no lo reconoce ya creado y no hace import
-				com.gestiongastos.CRUDdbGGastos.model.Member member = new com.gestiongastos.CRUDdbGGastos.model.Member();
-				
-				member.setAge(intRandom2);
-				member.setEmail(alphabetChars);
-				member.setName(alphabetChars);
-				member.setSurname(alphabetChars);
-				member.setPassword(alphabetChars);
-				member.addExpense(null);
 
-				memberRepository.save(new Member(faker.name().firstName(), faker.name().lastName(),
+				visitorRepository.save(new Visitor(faker.name().firstName(), faker.name().lastName(),
 						faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
 						faker.number().randomDouble(2, 5, 6000),
 						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2 + stringRandom3));
@@ -90,7 +81,7 @@ public class HomeController {
 				count++;
 			}
 
-			return "redirect:/member/allMembers";
+			return "redirect:/member/allVisitors";
 		}
 
 
