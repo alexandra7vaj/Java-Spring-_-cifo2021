@@ -1,6 +1,5 @@
 package com.gestiongastos.CRUDdbGGastos.model;
 
-import java.lang.reflect.Member;
 import java.util.Date;
 
 import javax.persistence.Entity;
