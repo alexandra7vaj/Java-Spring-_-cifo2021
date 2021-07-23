@@ -13,12 +13,31 @@ import com.gestiongastos.CRUDdbGGastos.model.Expense;
 import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
 
 
-//-------------CREATE-----------------------------------------------------------------------
      @Controller
      @RequestMapping("/expense")
-     public class ExpenseController {
-    	 @Autowired
- 		ExpenseRepository expenseRepository;
+     public class ExpenseController{
+ 	
+    @Autowired
+ 	ExpenseRepository expenseRepository;
+ //-------------CREATE-----------------------------------------------------------------------
+    
+    @RequestMapping("/newExpense")
+		public String newExpense () {
+
+			return "expense/newexpense.html";
+		}
+
+		@RequestMapping("/addExpense")
+		public String inserExpense ( @Validated Expense expense, Model boxToView) {
+			
+			//System.out.println(expense);
+			expenseRepository.save(expense);
+			boxToView.addAttribute("expensesfromController", expenseRepository.findAll());
+			boxToView.addAttribute("expenseAdded", expense);
+
+			return "expense/expenses.html";
+		}
+		
 
  //----------------------- READ--------------------------------------------------------------
  		@RequestMapping("/allExpenses")
@@ -46,12 +65,12 @@ import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
  				}
 
  				private Optional<Expense> findOneExpenseById(int id) {
-					// TODO Auto-generated method stub
+					
 					return null;
 				}
 
 				@PostMapping("/replaceExpense/{idFromView}")
- 				public String replaceEmployee(@PathVariable("idFromView") int id, Expense expense, Model model) {
+ 				public String replaceVisitor(@PathVariable("idFromView") int id, Expense expense, Model model) {
 
  					Optional<Expense> expenseFound = findOneExpenseById(id);
 
@@ -101,34 +120,14 @@ import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
  					// System.out.println("finishing removeEmployee" + id);
  					return "expense/expenses.html";
  				}
- 				
- //-----------------------ADD--------------------------------------------------------------------------
- 		 		@RequestMapping("/newExpense")
- 		 		public String newExpense () {
-
- 		 			return "expense/newexpense.html";
- 		 		}
-
- 		 		@RequestMapping("/addExpense")
- 		 		public String inserExpense ( @Validated Expense expense, Model boxToView) {
- 		 			
- 		 			//System.out.println(expense);
- 		 			expenseRepository.save(expense);
- 		 			boxToView.addAttribute("expensesfromController", expenseRepository.findAll());
- 		 			boxToView.addAttribute("expenseAdded", expense);
-
- 		 			return "expense/expenses.html";
- 		 		}
  		 		
  	
 //------------------------- service to controller --------------------------------------------------------
  		 		
  		 			public Optional<Expense> findOneExpenseByld(int id) {
 
- 		 				// System.out.println("inside findEmployee" + id);
- 		 				Optional<Expense> expenseFound = expenseRepository.findById(id);
- 		 				// System.out.println("finishing findEmployee" + id);
-		 				// System.out.println("finishing findEmployee" + employeeFound.get());
-		 				return expenseFound;
+ 		 				   Optional<Expense> expenseFound = expenseRepository.findById(id);
+ 		 				
+		 				   return expenseFound;
  		 			}
 }

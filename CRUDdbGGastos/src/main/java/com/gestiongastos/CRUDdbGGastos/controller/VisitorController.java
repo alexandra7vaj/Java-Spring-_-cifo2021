@@ -1,6 +1,5 @@
 package com.gestiongastos.CRUDdbGGastos.controller;
 
-import java.io.IOException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.gestiongastos.CRUDdbGGastos.repository.VisitorRepository;
 import com.gestiongastos.CRUDdbGGastos.model.Visitor;
@@ -42,9 +39,8 @@ public String insertVisitor(Visitor visitor) {
 @RequestMapping("/getVisitor/{id}")
 public Visitor findById(@PathVariable int id) {
 
-	Optional<Visitor> guestFound = visitorRepository.findById(id);
+	Optional<Visitor> visitorFound = visitorRepository.findById(id);
 
-	Optional<Visitor> visitorFound = null;
 	if (visitorFound.isPresent()) {
 
 		return visitorFound.get();
@@ -127,26 +123,12 @@ public String replaceVisitor(@PathVariable("idFromView") int id, Visitor visitor
 @RequestMapping("/deleteAllVisitors")
 
 public String deleteAllVisitors() {
+	
 	visitorRepository.deleteAll();
 	
 	return "redirect:/visitor/allVisitors";
 
-}
-
-//----------------------- ADD ----------------------------------------
-//@RequestMapping("/newVisitorr")
-//public String newVisitor1() {
-//
-//	return "newvisitor.html";
-//  }
-//
-//@RequestMapping("/addVisitor")
-//public String inserVisitor () {
-//
-//     visitorRepository.save(visitor1);
-//
-//	return "redirect:/visitor/allVisitors";
-// }
+     }
 
 }
 

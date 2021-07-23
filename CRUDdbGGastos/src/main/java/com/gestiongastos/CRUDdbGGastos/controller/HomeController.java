@@ -19,7 +19,7 @@ import com.gestiongastos.CRUDdbGGastos.model.Visitor;
 import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
 import com.gestiongastos.CRUDdbGGastos.repository.VisitorRepository;
 
-//import com.github.javafaker.Faker;
+import com.github.javafaker.Faker;
 
 @Controller
 public class HomeController {
@@ -65,27 +65,27 @@ public class HomeController {
 //			int count = 0;
 //			int intRandom;
 //			int intRandom2;
+//
 //			while (count < qtyToCreate) {
 //
 //				stringRandom1 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
 //				stringRandom2 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
-//				//stringRandom3 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
+//				stringRandom3 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
 //				intRandom = createIntRandom(max);
 //				intRandom2 = createIntRandom(max * 10);
 //				
 //
 //				visitorRepository.save(new Visitor(faker.name().firstName(), faker.name().lastName(),
-//						faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
-//						faker.number().randomDouble(2, 5, 2000),
+//					faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
+//					faker.number().randomDouble(2, 5, 2000),
 //						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2 + stringRandom3));
 //
-//				expenseRepository.save(new Expense(faker.beer().name(), faker.date().birthday(0, 3),
-//						faker.number().randomDouble(2, 50, 2000)));
+//				expenseRepository.save(new Expense(faker.beer().name(), faker.date().birthday(),
+//					faker.number().randomDouble()));
 //
-//				count++;
+//				count++; 
 //			}
 //
-//			return "redirect:/visitor/allVisitors";
 //		}
 
 
@@ -111,8 +111,8 @@ public class HomeController {
 			Random rand = new Random();
 
 			// Generate random integers in range 0 to top, if top=10 random 0 to 9
-			int intRandom = rand.nextInt(top);
-			// System.out.println(intRandom);
+		    int intRandom = rand.nextInt(top);
+//			// System.out.println(intRandom);
 			return intRandom;
 
 		}

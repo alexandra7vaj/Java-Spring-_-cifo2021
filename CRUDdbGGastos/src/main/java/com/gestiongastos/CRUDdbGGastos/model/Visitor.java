@@ -27,7 +27,7 @@ public class Visitor {
 
 // --------------- RELATIONSHIP Table ----------------------------------------
 	
-	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "visitor", cascade = CascadeType.ALL)
 	private List<Expense> expenses = new ArrayList<>();
 	
 // ---------------- CONSTRUCTOR ------------------------------------------
