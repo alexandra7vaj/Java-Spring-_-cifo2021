@@ -3,5 +3,33 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{home/layout}">
-	
+
+<title>Hi, Spender! I'm your cost controller.</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+
+
+		<div class="w3-container w3-display-middle">
+			<h1>Hi, Spender! I'm your cost controller.</h1>
+			<p>Enjoy our site ...</p>
+		</div>
+
+		<div class="w3-panel w3-teal w3-center w3-display-container">
+			<h1 th:inline="text">Hi,
+				I am your conscience, I'll help you control your  expenses!</h1>
+			<form th:action="@{/logout}" method="post">
+				<input class="w3-button" type="submit" value="Sign Out" />
+			</form>
+
+		</div>
+
+
+
+
+	</div>
+
+</body>
 </html>
