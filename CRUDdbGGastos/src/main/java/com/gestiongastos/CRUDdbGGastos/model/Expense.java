@@ -21,6 +21,7 @@ public class Expense {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private double price;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
@@ -30,28 +31,30 @@ public class Expense {
 	
 	//btw 1:n, member & expense
 	@ManyToOne
-	@JoinColumn(name = "MEMBER_FID")
-	private Member member;
+	@JoinColumn(name = "VISITOR_FID")
+	private Visitor visitor;
+	
 		
 	public Expense() {
 		super();
 	}
 	
-	public Expense(String name, Date date, double value) {
+	public Expense(String name, Date date, double price, double value) {
 		super();
 	
 		this.name = name;
 		this.date = date;
+		this.price = price;
 		this.value = value;
 	}
 	
-	public Expense(String name, Date date, double value, Member member) {
+	public Expense(String name, Date date, double price, double value, Visitor visitor) {
 		super();
 	
 		this.name = name;
 		this.date = date;
 		this.value = value;
-		this.member = member;
+		this.visitor = visitor;
 	}
 	
 	public int getId() {
@@ -80,24 +83,27 @@ public class Expense {
 		this.date = date;
 	}
 	
-	public Member getMember() {
-		return member;
+	
+	public double getPrice() {
+		return price;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
 	}
 
 	@Override
 	public String toString() {
-		return "Expense [id=" + id + ", name=" + name + ", date=" + date + ", value=" + value + "]";
+		return "Expense [id=" + id + ", name=" + name + ", price=" + price + ", date=" + date + ", value=" + value
+				+ ", visitor=" + visitor + "]";
 	}
-
-	public void setMember(com.gestiongastos.CRUDdbGGastos.model.Visitor member2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
 
 }

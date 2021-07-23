@@ -54,7 +54,7 @@ public class Visitor {
 	// изменила для последущего лучшего использования getter 
 	public void addExpense(Expense expense) {
 		this.expenses.add(expense);
-		expense.setMember(this);
+		expense.setVisitor(this);
 	}
 
 // ---------------- GETTERS & SETTERS --------------------------------------------
