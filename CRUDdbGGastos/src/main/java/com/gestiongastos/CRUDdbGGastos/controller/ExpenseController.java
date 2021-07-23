@@ -76,7 +76,8 @@ import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
  				}
  				
 //-----------------------DELETE-----------------------------------------------------------------------------
- 				@RequestMapping("/deleteExpense")
+ 				
+				@RequestMapping("/deleteExpense")
  				public String removeExpense(int id, Model boxToView) {
 
  					// System.out.println("inside removeEmployee" + id);
@@ -122,12 +123,12 @@ import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
  	
 //------------------------- service to controller --------------------------------------------------------
  		 		
-// 		 			public Optional<Expense> findOneExpenseById(int id) {
-//
-// 		 				// System.out.println("inside findEmployee" + id);
-// 		 				Optional<Expense> expenseFound = expenseRepository.findById(id);
-// 		 				// System.out.println("finishing findEmployee" + id);
-// 		 				// System.out.println("finishing findEmployee" + employeeFound.get());
-// 		 				return expenseFound;
-// 		 			}
+ 		 			public Optional<Expense> findOneExpenseByld(int id) {
+
+ 		 				// System.out.println("inside findEmployee" + id);
+ 		 				Optional<Expense> expenseFound = expenseRepository.findById(id);
+ 		 				// System.out.println("finishing findEmployee" + id);
+		 				// System.out.println("finishing findEmployee" + employeeFound.get());
+		 				return expenseFound;
+ 		 			}
 }

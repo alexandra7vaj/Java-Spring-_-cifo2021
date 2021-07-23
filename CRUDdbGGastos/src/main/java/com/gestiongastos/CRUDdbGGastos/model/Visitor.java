@@ -25,10 +25,13 @@ public class Visitor {
 	public String email;
 	public String password;
 
-
+// --------------- RELATIONSHIP Table ----------------------------------------
+	
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Expense> expenses = new ArrayList<>();
-
+	
+// ---------------- CONSTRUCTOR ------------------------------------------
+	
 	public Visitor() {
 		super();
 	}
@@ -43,7 +46,7 @@ public class Visitor {
 		this.password = password;
 	}
 
-	
+// --------------- RELATIONSHIP visitor&expense --------------------------------	
 	public List<Expense> getExpenses() {
 		return expenses;
 	}
@@ -54,6 +57,7 @@ public class Visitor {
 		expense.setMember(this);
 	}
 
+// ---------------- GETTERS & SETTERS --------------------------------------------
 
 	public String getPassword() {
 		return password;
@@ -103,7 +107,8 @@ public class Visitor {
 		this.email = email;
 	}
 
-
+// -------------- ToSTRING -------------------------------------------
+	
 	@Override
 	public String toString() {
 		return "Visitor [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", email=" + email

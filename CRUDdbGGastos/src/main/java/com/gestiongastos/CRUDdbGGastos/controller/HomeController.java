@@ -18,8 +18,8 @@ import com.gestiongastos.CRUDdbGGastos.model.Expense;
 import com.gestiongastos.CRUDdbGGastos.model.Visitor;
 import com.gestiongastos.CRUDdbGGastos.repository.ExpenseRepository;
 import com.gestiongastos.CRUDdbGGastos.repository.VisitorRepository;
+
 //import com.github.javafaker.Faker;
-import com.github.javafaker.Faker;
 
 @Controller
 public class HomeController {
@@ -31,11 +31,13 @@ public class HomeController {
 
 // ------------------------HOME---------------------------
 	@RequestMapping({ "/home", "/" })
+	
 	public String home() {
 		return "home/home";
 	}
 
 	@RequestMapping("/login")
+	
 	public String login() {
 		return "login";
 	}
@@ -44,59 +46,61 @@ public class HomeController {
 		@RequestMapping({ "/fillin" })
 		public String finInDB() {
 
-			return "member/fillinmember"; //возврат на заполненние БД в html 
+			return "visitor/fillivisitor"; //возврат на заполненние БД в html 
 		}
-
-		@RequestMapping({ "/fillinmember" })
-		public String fillInDBMember(int qtyToCreate) {
-
-			String alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!·$%&/()=?¿?=)()/*-+^*Ç¨_:;;:_+/+/";
-
-			
-			char stringRandom1, stringRandom2;
-
-			Faker faker = new Faker(); // тестовый генератор фальшивый пользователь для БД
-			
-			int max = 1525;
-			int count = 0;
-			int intRandom;
-			int intRandom2;
-			while (count < qtyToCreate) {
-
-				stringRandom1 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
-				stringRandom2 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
-				stringRandom3 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
-				intRandom = createIntRandom(max);
-				intRandom2 = createIntRandom(max * 10);
-				
-
-				visitorRepository.save(new Visitor(faker.name().firstName(), faker.name().lastName(),
-						faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
-						faker.number().randomDouble(2, 5, 6000),
-						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2 + stringRandom3));
-
-				expenseRepository.save(new Expense(faker.beer().name(), faker.date().birthday(0, 3),
-						faker.number().randomDouble(2, 50, 2000)));
-
-				count++;
-			}
-
-			return "redirect:/member/allVisitors";
-		}
+		
+		
+// ------------------------ Faker visitor -----------------------------------------
+//		@RequestMapping({ "/fillinvisitor" })
+//		public String fillInDBVisitor(int qtyToCreate) {
+//
+//			String alphabetChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!·$%&/()=?¿?=)()/*-+^*Ç¨_:;;:_+/+/";
+//
+//			
+//			char stringRandom1, stringRandom2;
+//
+//			Faker faker = new Faker(); // тестовый генератор фальшивый пользователь для БД
+//			
+//			int max = 1525;
+//			int count = 0;
+//			int intRandom;
+//			int intRandom2;
+//			while (count < qtyToCreate) {
+//
+//				stringRandom1 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
+//				stringRandom2 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
+//				//stringRandom3 = alphabetChars.charAt(createIntRandom(alphabetChars.length()));
+//				intRandom = createIntRandom(max);
+//				intRandom2 = createIntRandom(max * 10);
+//				
+//
+//				visitorRepository.save(new Visitor(faker.name().firstName(), faker.name().lastName(),
+//						faker.number().numberBetween(16, 65), faker.name().firstName() + "@java.com",
+//						faker.number().randomDouble(2, 5, 2000),
+//						String.valueOf((intRandom + 5) * (count + 1) * 6) + stringRandom1 + stringRandom2 + stringRandom3));
+//
+//				expenseRepository.save(new Expense(faker.beer().name(), faker.date().birthday(0, 3),
+//						faker.number().randomDouble(2, 50, 2000)));
+//
+//				count++;
+//			}
+//
+//			return "redirect:/visitor/allVisitors";
+//		}
 
 
 //// -------------------------- error path web----------------------------
 		
-		@RequestMapping({ "*", "*", "*/*" })
-		public String notFound(Model model) {
-
-			String pattern = "yyyy-MM-dd HH:mm:ssZ";
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-			model.addAttribute("serverTime", simpleDateFormat.format(new Date()));
-			model.addAttribute("smoker", true);
-
-			return "home/notFound";
-		}
+//		@RequestMapping({ "*", "*", "*/*" })
+//		public String notFound(Model model) {
+//
+//			String pattern = "yyyy-MM-dd HH:mm:ssZ";
+//			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+//			model.addAttribute("serverTime", simpleDateFormat.format(new Date()));
+//			model.addAttribute("smoker", true);
+//
+//			return "home/notFound";
+//		}
 
 		
 
